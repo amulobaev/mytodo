@@ -8,13 +8,22 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 using System.Web.Optimization;
+using Ninject;
+using Ninject.Web.Common;
 
 namespace MyToDo
 {
-    public class Global : HttpApplication
+    public class Global : NinjectHttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        protected override IKernel CreateKernel()
         {
+            return new StandardKernel(new MyNinjectModule());
+        }
+
+        protected override void OnApplicationStarted()
+        {
+            base.OnApplicationStarted();
+
             // Код, выполняемый при запуске приложения
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

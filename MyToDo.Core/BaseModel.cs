@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyToDo.Core
 {
-    public class Class1
+    public class BaseModel
     {
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public Guid Id { get; set; }
     }
 }
