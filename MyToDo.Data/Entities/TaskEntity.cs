@@ -1,12 +1,16 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyToDo.Data
 {
+    [Table("Tasks")]
     public class TaskEntity : BaseEntity
     {
         /// <summary>
         /// Наименование
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>

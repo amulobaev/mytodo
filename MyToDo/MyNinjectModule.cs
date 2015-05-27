@@ -12,7 +12,7 @@ namespace MyToDo
         public override void Load()
         {
             Bind<IEntityTypeResolver>().To<EntityTypeResolver>();
-            Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
+            Bind(typeof(IGenericRepository<>)).To(typeof(GenericEfRepository<>));
         }
     }
 }

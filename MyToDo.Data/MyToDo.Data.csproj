@@ -58,18 +58,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseRepositoryT.cs" />
-    <Compile Include="EfInternalRepository.cs" />
-    <Compile Include="EfRepository.cs" />
+    <Compile Include="Repositories\EfInternalRepository.cs" />
+    <Compile Include="Repositories\EfRepository.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="EntityTypeResolver.cs" />
+    <Compile Include="Repositories\GenericEfRepository.cs" />
     <Compile Include="IEntityTypeResolver.cs" />
-    <Compile Include="IInternalRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Repositories\ICustomRepository.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\IInternalRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="MyToDoContext.cs" />
     <Compile Include="Entities\TaskEntity.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\TasksRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyToDo.Core\MyToDo.Core.csproj">

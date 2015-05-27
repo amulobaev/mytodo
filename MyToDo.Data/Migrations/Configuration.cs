@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity.Migrations;
 
-namespace MyToDo.Data.Migrations
+namespace MyToDo.Data
 {
     internal sealed class Configuration : DbMigrationsConfiguration<MyToDoContext>
     {

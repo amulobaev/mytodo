@@ -1,7 +1,35 @@
-﻿
+﻿@model MyToDo.Models.HomeModel
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<div class="row">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Наименование</th>
+                <th>Текст</th>
+                <th>Статус</th>
+                <th>Срок создания</th>
+                <th>Срок выполнения</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model.Tasks)
+            {
+                <tr>
+                    <td>@(Model.Tasks.IndexOf(task) + 1)</td>
+                    <td>@task.Name</td>
+                    <td>@task.Text</td>
+                    <td>@task.Status</td>
+                    <td>@task.Created</td>
+                    <td>@task.Deadline</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MyToDo.Core;
 
 namespace MyToDo.Data
@@ -17,10 +18,20 @@ namespace MyToDo.Data
         where TEntity : BaseEntity
     {
         private readonly DbContext _dbContext;
+        
         private readonly DbSet<TEntity> _dbSet;
 
         /// <summary>
-        /// Конструктор
+        /// Статический конструктор
+        /// </summary>
+        static EfInternalRepository()
+        {
+            Mapper.CreateMap<TModel, TEntity>();
+            Mapper.CreateMap<TEntity, TModel>();
+        }
+
+        /// <summary>
+        /// Конструктор экземпляра
         /// </summary>
         /// <param name="dbContext"></param>
         public EfInternalRepository(DbContext dbContext)
@@ -34,9 +45,14 @@ namespace MyToDo.Data
 
         public IEnumerable<TModel> GetAll()
         {
-            TEntity[] entities = _dbSet.ToArray();
-            TModel[] models = Mapper.Map<TEntity[], TModel[]>(entities);
+            List<TEntity> entities = _dbSet.ToList();
+            List<TModel> models = Mapper.Map<List<TEntity>, List<TModel>>(entities);
             return models;
+        }
+
+        public IQueryable<TModel> Query()
+        {
+            return _dbSet.Project().To<TModel>();
         }
 
         public TModel GetById(Guid id)
@@ -74,8 +90,8 @@ namespace MyToDo.Data
 
         public void CreateMappings()
         {
-            Mapper.CreateMap<TModel, TEntity>();
-            Mapper.CreateMap<TEntity, TModel>();
+            //Mapper.CreateMap<TModel, TEntity>();
+            //Mapper.CreateMap<TEntity, TModel>();
             //.ConstructUsing(x => (TModel)Activator.CreateInstance(typeof(TModel), x.Id));
         }
 
