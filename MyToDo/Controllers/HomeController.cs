@@ -28,5 +28,11 @@ namespace MyToDo.Controllers
             model.Tasks.AddRange(tasks);
             return View(model);
         }
+
+        [ChildActionOnly]
+        public ActionResult Task()
+        {
+            return PartialView();
+        }
     }
 }
