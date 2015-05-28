@@ -5,8 +5,17 @@ namespace MyToDo.Core
     /// <summary>
     /// Задача
     /// </summary>
-    public class Task : BaseModel
+    public class MyTask : BaseModel
     {
+        public MyTask()
+        {
+        }
+
+        public MyTask(Guid id)
+        {
+            Id = id;
+        }
+
         /// <summary>
         /// Наименование
         /// </summary>
@@ -31,5 +40,6 @@ namespace MyToDo.Core
         /// Срок выполнения
         /// </summary>
         public DateTime Deadline { get; set; }
+
     }
 }

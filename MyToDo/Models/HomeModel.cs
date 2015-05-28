@@ -8,13 +8,13 @@ namespace MyToDo.Models
 {
     public class HomeModel
     {
-        private readonly List<Task> _tasks = new List<Task>();
+        private readonly List<MyTask> _tasks = new List<MyTask>();
 
         public HomeModel()
         {
         }
 
-        public List<Task> Tasks
+        public List<MyTask> Tasks
         {
             get { return _tasks; }
         }

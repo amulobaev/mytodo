@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyToDo.Data
 {
     [Table("Tasks")]
-    public class TaskEntity : BaseEntity
+    internal class TaskEntity : BaseEntity
     {
         /// <summary>
         /// Наименование

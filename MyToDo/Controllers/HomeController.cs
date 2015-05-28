@@ -9,11 +9,12 @@ using MyToDo.Models;
 
 namespace MyToDo.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private readonly IRepository<Task> _repository;
+        private readonly IRepository<MyTask> _repository;
 
-        public HomeController(IGenericRepository<Task> repository)
+        public HomeController(ICustomRepository<MyTask> repository)
         {
             _repository = repository;
         }
@@ -22,8 +23,8 @@ namespace MyToDo.Controllers
         public ActionResult Index()
         {
             HomeModel model = new HomeModel();
-            //List<Task> tasks = _repository.Query().OrderBy(x => x.Created).ToList();
-            List<Task> tasks = _repository.GetAll().OrderBy(x => x.Created).ToList();
+            List<MyTask> tasks = _repository.Query().OrderBy(x => x.Created).ToList();
+            //List<MyTask> tasks = _repository.GetAll().OrderBy(x => x.Created).ToList();
             model.Tasks.AddRange(tasks);
             return View(model);
         }

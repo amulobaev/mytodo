@@ -2,7 +2,7 @@
 
 namespace MyToDo.Data
 {
-    public class MyToDoContext : DbContext
+    internal class MyToDoContext : DbContext
     {
         public MyToDoContext()
             : base("name=MyToDoContext")
@@ -17,5 +17,7 @@ namespace MyToDo.Data
         }
 
         public DbSet<TaskEntity> Tasks { get; set; }
+
+        public DbSet<UserEntity> Users { get; set; }
     }
 }
